@@ -2,6 +2,9 @@ module github.com/WqyJh/go-openai-realtime/examples
 
 go 1.19
 
+replace (
+	github.com/WqyJh/go-openai-realtime => ../
+)
 require (
 	github.com/WqyJh/go-openai-realtime v0.3.0-alpha
 	github.com/faiface/beep v1.1.0

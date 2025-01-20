@@ -22,8 +22,10 @@ import (
 func main() {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
-	client := openairt.NewClient(os.Getenv("OPENAI_API_KEY"))
-	conn, err := client.Connect(ctx)
+	config := openairt.DefaultAzureConfig(os.Getenv("AZURE_API_KEY"), "wss://csr2home-sc.openai.azure.com/openai/realtime")
+	client := openairt.NewClientWithConfig(config)
+	opt := openairt.WithModel("gpt-4o-realtime-preview")
+	conn, err := client.Connect(ctx, opt)
 	if err != nil {
 		log.Fatal(err)
 	}
